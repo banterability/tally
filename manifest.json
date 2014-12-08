@@ -1,7 +1,7 @@
 {
   "name": "Tally",
   "version": "1.0",
-  "description": "",
+  "description": "Display the number of open tabs across all windows",
   "background": {
     "scripts": ["background.js"]
   },
