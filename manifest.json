@@ -1,0 +1,14 @@
+{
+  "name": "Tally",
+  "version": "1.0",
+  "description": "",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_title": "Count Tabs",
+    "default_icon": "icon-39.png"
+  },
+  "manifest_version": 2,
+  "offline_enabled": true
+}
