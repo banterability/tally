@@ -1,26 +1,35 @@
-function setCount(tabCount){
-  chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 255, 255]});
-  chrome.browserAction.setBadgeText({text: tabCount.toString()});
+RED = [255, 0, 0, 255];
+GREEN = [0, 255, 0, 255];
+BLUE = [0, 0, 255, 255];
+
+function setBadge(text, color){
+  if(color){
+    chrome.browserAction.setBadgeBackgroundColor({color: color});
+  }
+  chrome.browserAction.setBadgeText({text: text});
 }
 
-function setDirection(direction){
+function updateDirection(direction){
   if(direction === '+'){
-    chrome.browserAction.setBadgeBackgroundColor({color: [0, 255, 0, 255]});
+    setBadge(direction, GREEN);
   } else {
-    chrome.browserAction.setBadgeBackgroundColor({color: [255, 0, 0, 255]});
+    setBadge(direction, RED);
   }
-  chrome.browserAction.setBadgeText({text: direction});
+}
+
+function updateCount(tabCount){
+  setBadge(tabCount.toString(), BLUE);
 }
 
 function update(direction){
   chrome.tabs.query({}, function(tabs){
     if(direction){
-      setDirection(direction);
+      updateDirection(direction);
       setTimeout(function(){
-        setCount(tabs.length);
+        updateCount(tabs.length);
       }, 500);
     } else {
-      setCount(tabs.length);
+      updateCount(tabs.length);
     }
   });
 }
