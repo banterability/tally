@@ -10,11 +10,7 @@ function setBadge(text, color){
 }
 
 function updateDirection(direction){
-  if(direction === '+'){
-    setBadge(direction, GREEN);
-  } else {
-    setBadge(direction, RED);
-  }
+  setBadge(direction, direction === '+' ? GREEN : RED);
 }
 
 function updateCount(tabCount){
